@@ -1,10 +1,10 @@
-module subtractor_tb();
+module halfsubtractor_tb();
 reg a,b;
 wire difference,borrow;
-subtractor dut(.a(a),.b(b),.difference(difference),.borrow(borrow));
+halfsubtractor dut(.a(a),.b(b),.difference(difference),.borrow(borrow));
 integer i;
 initial begin
-    $dumpfile("subtractor.vcd");
+    $dumpfile("halfsubtractor.vcd");
     $dumpvars(0,dut);
     $monitor("time=%0t,%b,b=%b,difference=%b,borrow=%b",$time,a,b,difference,borrow);
     for(i=0;i<4;i=i+1) begin
