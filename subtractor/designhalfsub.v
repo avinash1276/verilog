@@ -1,4 +1,4 @@
-module subtractor(
+module halfsubtractor(
     input a,b,
     output difference,borrow
 );
