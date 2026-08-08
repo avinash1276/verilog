@@ -1,4 +1,4 @@
-module comparator(
+module comparator2bit(
     input [1:0]a,b,
     output x,y,z
 );
