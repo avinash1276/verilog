@@ -1,0 +1,26 @@
+module ALU8bit_tb();
+
+  reg [7:0] a, b;
+  reg [2:0] s;
+  wire [7:0] x;
+  ALU8bit dut(
+    .a(a),
+    .b(b),
+    .s(s),
+    .x(x)
+  );
+  integer i, j;
+  initial begin
+    $dumpfile("ALU8bit.vcd");
+    $dumpvars(0, dut);
+    $monitor("a=%b, b=%b, s=%b, x=%b",a, b, s, x);
+    for (j = 0; j < 8; j = j + 1) begin
+      s = 5;
+      for (i = 0; i < 65536; i = i + 1) begin
+        {a, b} = 77;
+        #5;
+      end
+    end
+    $finish;
+  end
+endmodule
