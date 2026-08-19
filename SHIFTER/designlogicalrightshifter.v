@@ -1,4 +1,4 @@
-module rightshifter4bit(
+module logicalrightshifter4bit(
 input [3:0]a,
 output [3:0]x
 );
