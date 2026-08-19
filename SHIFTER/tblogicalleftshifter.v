@@ -1,10 +1,10 @@
-module leftshifter4bit_tb();
+module logicalleftshifter4bit_tb();
   reg [3:0]a;
   wire [3:0]x;
-  leftshifter4bit dut(.a(a),.x(x));
+  logicalleftshifter4bit dut(.a(a),.x(x));
   integer i;
   initial begin
-    $dumpfile("leftshifter4bit.vcd");
+    $dumpfile("logicalleftshifter4bit.vcd");
     $dumpvars(0,dut);
     $monitor("a=%b,x=%b",a,x);
     for(i=0;i<16;i=i+1) begin
