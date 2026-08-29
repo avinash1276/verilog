@@ -1,0 +1,38 @@
+module jk_ff_tb;
+
+reg clk;
+reg j, k;
+wire q;
+
+jk_ff dut(
+    .clk(clk),
+    .j(j),
+    .k(k),
+    .q(q)
+);
+
+initial begin
+    $dumpfile("jk_ff.vcd");
+    $dumpvars(0, jk_ff_tb);
+
+    $monitor("time=%0t, clk=%b, j=%b, k=%b, q=%b",
+             $time, clk, j, k, q);
+
+    clk = 0;
+    j = 0;
+    k = 0;
+
+    #10 j = 1; k = 0;   // Set
+    #10 j = 0; k = 0;   // Hold
+    #10 j = 0; k = 1;   // Reset
+    #10 j = 0; k = 0;   // Hold
+    #10 j = 1; k = 1;   // Toggle
+    #10 j = 1; k = 1;   // Toggle again
+    #10 j = 0; k = 0;   // Hold
+
+    #10 $finish;
+end
+
+always #5 clk = ~clk;
+
+endmodule
