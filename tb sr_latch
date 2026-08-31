@@ -1,0 +1,47 @@
+module srlatch_tb;
+
+reg s, r;
+wire q, qbar;
+
+srlatch dut(
+    .s(s),
+    .r(r),
+    .q(q),
+    .qbar(qbar)
+);
+
+initial begin
+    $dumpfile("srlatch.vcd");
+    $dumpvars(0, srlatch_tb);
+
+    $monitor("time=%0t, s=%b, r=%b, q=%b, qbar=%b",
+             $time, s, r, q, qbar);
+
+    // Set
+    s = 1; r = 0;
+    #10;
+
+    // Hold
+    s = 0; r = 0;
+    #10;
+
+    // Reset
+    s = 0; r = 1;
+    #10;
+
+    // Hold
+    s = 0; r = 0;
+    #10;
+
+    // Set again
+    s = 1; r = 0;
+    #10;
+
+    // Invalid condition
+    s = 1; r = 1;
+    #10;
+
+    $finish;
+end
+
+endmodule
