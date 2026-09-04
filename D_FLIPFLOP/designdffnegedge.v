@@ -1,4 +1,4 @@
-module dff(
+module dffnegedge(
     input d,
     input clk,
     output reg q
